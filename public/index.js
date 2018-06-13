@@ -26,9 +26,17 @@ const populateList = function(beers) {
 
 const createListItem = function(item) {
   const li = document.createElement('li');
-  const ul = document.querySelector('#beer-list'); 
+  const ul = document.querySelector('#beer-list');
   li.textContent = item.name;
+  li.appendChild(createImgTag(item))
   ul.appendChild(li);
+}
+
+const createImgTag = function(item) {
+  const image = document.createElement('img');
+  image.src = item.image_url;
+  image.height = '200';
+  return image;
 }
 
 window.addEventListener('load', app);
