@@ -1,1 +1,27 @@
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
+
+li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  margin: 5vw;
+  padding: 20px;
+  /* height: 20vh;
+  width: 10vw; */
+}
+
+img {
+  height: 30vh;
+  /* width: 5vw; */
+}
+
+h1 {
+  text-align: center;
+}

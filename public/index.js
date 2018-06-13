@@ -16,6 +16,7 @@ const requestComplete = function() {
   const beers = JSON.parse(this.response);
   console.log(beers);
   populateList(beers);
+  populateDropdown(beers);
 }
 
 const populateList = function(beers) {
@@ -35,8 +36,40 @@ const createListItem = function(item) {
 const createImgTag = function(item) {
   const image = document.createElement('img');
   image.src = item.image_url;
-  image.height = '200';
   return image;
+}
+
+const populateDropdown = function(beers) {
+  beers.forEach(function(beer) {
+    createOptionTag(beer);
+  });
+  const dropdown = document.querySelector('#beerDropDown');
+  dropdown.addEventListener('change', showBeer);
+}
+
+const createOptionTag = function(item) {
+  const dropdown = document.querySelector('#beerDropDown');
+  const option = document.createElement('option');
+  option.textContent = item.name;
+  const stringItem = JSON.stringify(item);
+  option.value = stringItem;
+  dropdown.appendChild(option);
+}
+
+const showBeer = function() {
+  const ul = document.querySelector('#beer-list');
+  ul.innerHTML = '';
+
+
+  const selected = JSON.parse(document.querySelector('#beerDropDown').value);
+
+  const h2 = document.createElement('h2');
+  h2.textContent = selected.name;
+
+  const section = document.querySelector('#beer');
+  section.innerHTML = '';
+
+  section.appendChild(h2);
 }
 
 window.addEventListener('load', app);
