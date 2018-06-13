@@ -14,7 +14,6 @@ const makeRequest = function(url, requestComplete) {
 const requestComplete = function() {
   if (this.status !== 200) return;
   const beers = JSON.parse(this.response);
-  console.log(beers);
   populateList(beers);
   populateDropdown(beers);
 }
@@ -57,8 +56,7 @@ const createOptionTag = function(item) {
 }
 
 const showBeer = function() {
-  const ul = document.querySelector('#beer-list');
-  ul.innerHTML = '';
+  clearUl()
 
 
   const selected = JSON.parse(document.querySelector('#beerDropDown').value);
@@ -70,6 +68,19 @@ const showBeer = function() {
   section.innerHTML = '';
 
   section.appendChild(h2);
+  section.appendChild(createImgTag(selected))
+  section.appendChild(createDescription(selected));
+}
+
+const createDescription = function(item) {
+  const description = document.createElement('p');
+  description.textContent = item.description;
+  return description;
+}
+
+const clearUl = function() {
+  const ul = document.querySelector('#beer-list');
+  ul.innerHTML = '';
 }
 
 window.addEventListener('load', app);

@@ -25,3 +25,8 @@ img {
 h1 {
   text-align: center;
 }
+
+#beer img {
+  float: left;
+  height: 50vh;
+}
